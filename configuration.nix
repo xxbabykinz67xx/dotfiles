@@ -42,18 +42,32 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+# --- Wayland / Hyperland ---
+programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+};
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+# Login manager (Wayland-native, minimal)
+services.greetd = {
+    enable = true;
+    settings = {
+        default_session = {
+            command ="${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
+            user = "greeter";
+        };
+    };
+};
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
+# Portals: screen share, file pickers, etc. work correctly under Hyprland
+xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+    configPackages = [pkgs.hyprland ];
+};
+
+# greetd/Hyprland reads it via xkb too
+    console.keyMap = "us";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -102,6 +116,17 @@
 	gh
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
+# Hyprland ecosystem
+  waybar # status bar
+  wofi # app launcher
+  kitty # terminal
+  swaylock # lockscreen
+  swayidle # idle/lock management
+  wl-clipboard # clipboard
+  grim # screenshot
+  slurp # screen region select
+  hyprpaper # wallpaper daemon
+  polkit_gnome # auth agent (needed for GUI privilege prompts)
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
