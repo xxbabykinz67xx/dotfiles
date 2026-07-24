@@ -146,8 +146,8 @@ security.sudo.wheelNeedsPassword = false;
         openFirewall = true;
 
         settings= {
-            download-dir = "/home/frandrew/Downloads/torrents";
-            incomplete-dir = "/home/frandrew/Downloads/.incomplete";
+            download-dir = "/var/lib/transmission/Downloads";
+            incomplete-dir = "/var/lib/transmission/.incomplete";
             incomplete-dir-enabled = true;
 
             rpc-bind-address = "127.0.0.1";
