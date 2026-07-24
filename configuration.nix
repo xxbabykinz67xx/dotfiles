@@ -95,7 +95,7 @@ xdg.portal = {
   users.users."frandrew" = {
     isNormalUser = true;
     description = "admin";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "transmission"];
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -143,7 +143,20 @@ xdg.portal = {
 
         openFirewall = true;
 
-        settings.download-dir = "/home/frandrew/Downloads/torrents";
+        settings= {
+            download-dir = "/home/frandrew/Downloads/torrents";
+            incomplete-dir = "/home/frandrew/Downloads/.incomplete";
+            incomplete-dir-enabled = true;
+
+            rpc-bind-address = "127.0.0.1";
+            rpc-whitelist = "127.0.0.1";
+            rpc-whitelist-enabled = true;
+            rpc-authentication-required = false;
+
+            peer-port = 51413;
+            umask = 2;
+
+            };
         };
 
   # Some programs need SUID wrappers, can be configured further or are
