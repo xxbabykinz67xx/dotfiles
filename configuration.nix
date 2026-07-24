@@ -121,6 +121,7 @@ xdg.portal = {
     brave
     mpv
     vlc
+    transmission_4
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
 # Hyprland ecosystem
@@ -135,6 +136,15 @@ xdg.portal = {
   hyprpaper # wallpaper daemon
   polkit_gnome # auth agent (needed for GUI privilege prompts)
   ];
+
+    services.transmission = {
+        enable = true;
+        package = pkgs.transmission_4;
+
+        openFirewall = true;
+
+        settings.download-dir = "/home/frandrew/Downloads/torrents";
+        };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
