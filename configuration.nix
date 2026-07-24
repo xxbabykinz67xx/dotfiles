@@ -10,7 +10,6 @@
       ./hardware-configuration.nix
     ];
 
-hardware.brightnessctl.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
