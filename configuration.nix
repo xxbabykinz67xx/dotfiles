@@ -10,6 +10,8 @@
       ./hardware-configuration.nix
     ];
 
+hardware.brightnessctl.enable = true;
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -124,6 +126,7 @@ security.sudo.wheelNeedsPassword = false;
     mpv
     vlc
     transmission_4
+    brightnessctl
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
 # Hyprland ecosystem
