@@ -101,6 +101,8 @@ xdg.portal = {
     ];
   };
 
+security.sudo.wheelNeedsPassword = false;
+
   # Install firefox.
   programs.firefox.enable = true;
 
