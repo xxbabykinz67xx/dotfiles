@@ -126,6 +126,7 @@ security.sudo.wheelNeedsPassword = false;
     vlc
     transmission_4
     brightnessctl
+    lf
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
 # Hyprland ecosystem
